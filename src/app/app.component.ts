@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 @Component({
     selector: 'app-root',
@@ -31,8 +30,7 @@ export class AppComponent {
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
-        private statusBar: StatusBar,
-        private sqlite: SQLite
+        private statusBar: StatusBar
     ) {
         this.initializeApp();
     }
@@ -42,16 +40,5 @@ export class AppComponent {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });
-
-        this.createLocalDb();
-    }
-
-    createLocalDb() {
-        this.sqlite.create({
-            name: 'locationalarm.db',
-            location: 'default'
-        }).then((db: SQLiteObject) => {
-            db.executeSql('CREATE TABLE LOCATIONALARMS(laid INTEGER PRIMARY KEY AUTOINCREMENT, origin CHAR(50) NOT NULL, destination CHAR(50) NOT NULL, latitude REAL, longitude REAL, wakeupkm INT, joudate TEXT)', []).then((r) => console.log('Executed SQL', r)).catch(e => console.log(e, 'error inside'));
-        }).catch(e => console.log(e, 'error inside'));
     }
 }
