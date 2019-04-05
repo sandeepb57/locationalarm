@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{headerTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="locationAlarm" (ngSubmit)="submitLocationAlarm()">
+        <ion-list>
+            <ion-item>
+                <ion-label position="fixed">Origin</ion-label>
+                <ion-input formControlName="origin"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Destination</ion-label>
+                <ion-input formControlName="destination"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Latitude</ion-label>
+                <ion-input type="number" formControlName="latitude"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Longitude</ion-label>
+                <ion-input type="number" formControlName="longitude"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed" text-wrap>Wake me up before in KM</ion-label>
+                <ion-input type="number" formControlName="wakeDistance"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed" text-wrap>Date of journey you reach by</ion-label>
+                <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MM YYYY" formControlName="dateOfJourney">
+                </ion-datetime>
+            </ion-item>
+        </ion-list>
+        <ion-note [hidden]="validationError" color="danger">{{errorFormText}}</ion-note>
+        <ion-row>
+            <ion-col>
+                <ion-button type="submit" color="primary" shape="full">Add</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" shape="full" routerLink="/" routerDirection="forward">Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
