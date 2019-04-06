@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
+        NativeStorage,
         RouterModule.forChild(routes)
     ],
     declarations: [AddlaPage]

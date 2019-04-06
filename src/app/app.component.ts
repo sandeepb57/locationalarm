@@ -21,9 +21,9 @@ export class AppComponent {
             icon: 'settings'
         },
         {
-            title: 'Rate us',
+            title: 'Feedback',
             url: '/home',
-            icon: 'star'
+            icon: 'paper'
         }
     ];
 
